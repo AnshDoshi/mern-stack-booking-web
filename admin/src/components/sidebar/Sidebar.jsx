@@ -17,7 +17,12 @@ import { useContext } from "react";
 
 const Sidebar = () => {
   const { dispatch } = useContext(DarkModeContext);
-  const navigate=useNavigate()
+  const navigate = useNavigate();
+
+  const logOutCalled = () => {
+    localStorage.clear();
+    navigate("/login");
+  };
   return (
     <div className="sidebar">
       <div className="top">
@@ -31,7 +36,7 @@ const Sidebar = () => {
           <p className="title">MAIN</p>
           <li>
             <DashboardIcon className="icon" />
-            <span onClick={()=>navigate("/")}>Dashboard</span>
+            <span onClick={() => navigate("/")}>Dashboard</span>
           </li>
           <p className="title">LISTS</p>
           <Link to="/users" style={{ textDecoration: "none" }}>
@@ -52,11 +57,11 @@ const Sidebar = () => {
               <span>Rooms</span>
             </li>
           </Link>
-          
+
           <p className="title">USEFUL</p>
-            <li>
+          <li>
             <ExitToAppIcon className="icon" />
-            <span>Logout</span>
+            <span onClick={logOutCalled}>Logout</span>
           </li>
         </ul>
       </div>

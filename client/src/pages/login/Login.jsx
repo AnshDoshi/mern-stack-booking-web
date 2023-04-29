@@ -13,7 +13,6 @@ const Login = () => {
 
   const LoginSchema = object().shape({
     username: string().required("Required Field"),
-
     password: string().required("Required Field").trim("Required Field"),
   });
 

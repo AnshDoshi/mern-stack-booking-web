@@ -18,12 +18,14 @@ const List = () => {
   const [max, setMax] = useState(undefined);
 
   const { data, loading, error, reFetch } = useFetch(
-    `/hotels?city=${destination}&min=${min || 0 }&max=${max || 999}`
+    `/hotels?city=${destination}&min=${min || 0}&max=${max || 999}`
   );
 
   const handleClick = () => {
     reFetch();
   };
+
+  console.log(data.length, "<<<");
 
   return (
     <div>
@@ -110,11 +112,16 @@ const List = () => {
               "loading"
             ) : (
               <>
-                {data.map((item) => {
-                  console.log(item,"<<<item")
-                  return(
-                  <SearchItem item={item} key={item._id} />
-                )})}
+                {data.length !== 0 ? (
+                  <>
+                    {data.map((item) => {
+                      console.log(item, "<<<item");
+                      return <SearchItem item={item} key={item._id} />;
+                    })}
+                  </>
+                ) : (
+                  <p>No Data Found</p>
+                )}
               </>
             )}
           </div>

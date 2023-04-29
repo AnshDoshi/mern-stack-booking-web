@@ -63,6 +63,15 @@ const Hotel = () => {
       navigate("/login");
     }
   };
+
+  const images = [
+    "https://cf.bstatic.com/xdata/images/xphoto/square300/57584488.webp?k=bf724e4e9b9b75480bbe7fc675460a089ba6414fe4693b83ea3fdd8e938832a6&o=",
+    "https://cf.bstatic.com/static/img/theme-index/carousel_320x240/card-image-apartments_300/9f60235dc09a3ac3f0a93adbc901c61ecd1ce72e.jpg",
+    "https://cf.bstatic.com/static/img/theme-index/carousel_320x240/bg_resorts/6f87c6143fbd51a0bb5d15ca3b9cf84211ab0884.jpg",
+    "https://cf.bstatic.com/static/img/theme-index/carousel_320x240/card-image-villas_300/dd0d7f8202676306a661aa4f0cf1ffab31286211.jpg",
+    "https://cf.bstatic.com/static/img/theme-index/carousel_320x240/card-image-chalet_300/8ee014fcc493cb3334e25893a1dee8c6d36ed0ba.jpg",
+  ];
+  const dataOfPhotoes = data?.photos ? images : data?.photos;
   return (
     <div>
       <Navbar />
@@ -98,7 +107,7 @@ const Hotel = () => {
             </div>
           )}
           <div className="hotelWrapper">
-            <button className="bookNow">Reserve or Book Now!</button>
+            {/* <button className="bookNow">Reserve or Book Now!</button> */}
             <h1 className="hotelTitle">{data?.name}</h1>
             <div className="hotelAddress">
               <FontAwesomeIcon icon={faLocationDot} />
@@ -108,14 +117,13 @@ const Hotel = () => {
               Excellent location – {data?.distance}m from center
             </span>
             <span className="hotelPriceHighlight">
-              Book a stay over ${data.cheapestPrice} at this property and get a
-              free airport taxi
+              Book a stay over Rs{data?.cheapestPrice} at this property
             </span>
             <div className="hotelImages">
-              {data?.photos?.map((photo, i) => (
+              {images?.map((photo, i) => (
                 <div className="hotelImgWrapper" key={i}>
                   <img
-                    onClick={() => handleOpen(i)}
+                    // onClick={() => handleOpen(i)}
                     src={photo}
                     alt=""
                     className="hotelImg"
@@ -129,14 +137,14 @@ const Hotel = () => {
                 <p className="hotelDesc">{data.desc}</p>
               </div>
               <div className="hotelDetailsPrice">
-                <h1>Perfect for a {days}-night stay!</h1>
+                <h1>Perfect for a {days || 0}-night stay!</h1>
                 <span>
                   Located in the real heart of Krakow, this property has an
                   excellent location score of 9.8!
                 </span>
                 <h2>
-                  <b>${days * data.cheapestPrice * options.room}</b> ({days}{" "}
-                  nights)
+                  <b>Rs.{days * data.cheapestPrice * options.room || 0}</b> (
+                  {days || 0} nights)
                 </h2>
                 <button onClick={handleClick}>Reserve or Book Now!</button>
               </div>
@@ -146,7 +154,7 @@ const Hotel = () => {
           <Footer />
         </div>
       )}
-      {openModal && <Reserve setOpen={setOpenModal} hotelId={id}/>}
+      {openModal && <Reserve setOpen={setOpenModal} hotelId={id} />}
     </div>
   );
 };

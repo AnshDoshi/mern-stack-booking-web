@@ -74,13 +74,13 @@ export const hotelInputs = [
     id: "name",
     label: "Name",
     type: "text",
-    placeholder: "My Hotel",
+    placeholder: "My Room",
   },
   {
     id: "type",
     label: "Type",
     type: "text",
-    placeholder: "hotel",
+    placeholder: "Room",
   },
   {
     id: "city",
@@ -104,7 +104,7 @@ export const hotelInputs = [
     id: "title",
     label: "Title",
     type: "text",
-    placeholder: "The best Hotel",
+    placeholder: "The best Room",
   },
   {
     id: "desc",

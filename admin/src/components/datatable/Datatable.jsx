@@ -6,19 +6,25 @@ import { useEffect, useState } from "react";
 import useFetch from "../../hooks/useFetch";
 import axios from "axios";
 
-const Datatable = ({columns}) => {
+const Datatable = ({ columns }) => {
   const location = useLocation();
   const path = location.pathname.split("/")[1];
   const [list, setList] = useState();
-  const { data, loading, error } = useFetch(`http://localhost:8800/api/${path==="rentals"?"hotels":path}`);
+  const { data, loading, error } = useFetch(
+    `http://localhost:8800/api/${path === "rentals" ? "hotels" : path}`
+  );
 
   useEffect(() => {
     setList(data);
   }, [data]);
 
-  const handleDelete = async (id) => {
+  const handleDelete = async (id, secondId) => {
     try {
-      await axios.delete(`http://localhost:8800/api/${path==="rentals"?"hotels":path}/${id}`);
+      await axios.delete(
+        `http://localhost:8800/api/${
+          path === "rentals" ? "hotels" : path
+        }/${id}`
+      );
       setList(list.filter((item) => item._id !== id));
     } catch (err) {}
   };
@@ -31,9 +37,9 @@ const Datatable = ({columns}) => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <Link to="/users/test" style={{ textDecoration: "none" }}>
+            {/* <Link to="/users/test" style={{ textDecoration: "none" }}>
               <div className="viewButton">View</div>
-            </Link>
+            </Link> */}
             <div
               className="deleteButton"
               onClick={() => handleDelete(params.row._id)}

@@ -9,7 +9,7 @@ import axios from "axios";
 
 const NewRoom = () => {
   const [info, setInfo] = useState({});
-  const [hotelId, setHotelId] = useState('');
+  const [hotelId, setHotelId] = useState("");
   const [rooms, setRooms] = useState([]);
 
   const { data, loading, error } = useFetch("http://localhost:8800/api/hotels");
@@ -22,13 +22,15 @@ const NewRoom = () => {
     e.preventDefault();
     const roomNumbers = rooms.split(",").map((room) => ({ number: room }));
     try {
-      await axios.post(`http://localhost:8800/api/rooms/${hotelId}`, { ...info, roomNumbers });
+      await axios.post(`http://localhost:8800/api/rooms/${hotelId}`, {
+        ...info,
+        roomNumbers,
+      });
     } catch (err) {
       console.log(err);
     }
   };
 
-  console.log(info)
   return (
     <div className="new">
       <Sidebar />
@@ -59,7 +61,7 @@ const NewRoom = () => {
                 />
               </div>
               <div className="formInput">
-                <label>Choose a hotel</label>
+                <label>Choose a Room</label>
                 <select
                   id="hotelId"
                   onChange={(e) => setHotelId(e.target.value)}
@@ -68,7 +70,9 @@ const NewRoom = () => {
                     ? "loading"
                     : data &&
                       data.map((hotel) => (
-                        <option key={hotel._id} value={hotel._id}>{hotel.name}</option>
+                        <option key={hotel._id} value={hotel._id}>
+                          {hotel.name}
+                        </option>
                       ))}
                 </select>
               </div>

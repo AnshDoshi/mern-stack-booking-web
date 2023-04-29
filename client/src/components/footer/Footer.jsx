@@ -44,7 +44,7 @@ const Footer = () => {
           <li className="fListItem">Terms & conditions</li>
         </ul>
       </div>
-      <div className="fText">Copyright © 2022 Rentalia.</div>
+      <div className="fText">Copyright © 2022 Rentilia.</div>
     </div>
   );
 };

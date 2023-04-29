@@ -4,7 +4,7 @@
   left: 0;
   height: 100vh;
   width: 100vw;
-  background-image: url('../../assets/estate2.jpg');
+  background-image: url("../../assets/estate2.jpg");
   background-color: rgba(0, 0, 0, 0.2);
   background-size: cover;
   background-blend-mode: darken;
@@ -22,7 +22,7 @@
   background-color: #fff;
 }
 
-.wrapper>h2 {
+.wrapper > h2 {
   color: #171097;
   text-align: center;
   margin: 2.5rem 0;
@@ -36,14 +36,14 @@ form {
   gap: 42px;
 }
 
-form>input {
+form > input {
   width: 50%;
   outline: none;
   border: none;
   border-bottom: 1px solid #333;
 }
 
-form>label {
+form > label {
   align-self: center;
   width: 50%;
   cursor: pointer;
@@ -53,11 +53,11 @@ form>label {
   gap: 12px;
 }
 
-form>label:hover {
+form > label:hover {
   color: #444;
 }
 
-form>button {
+form > button {
   outline: none;
   background-color: blue;
   color: #fff;
@@ -69,13 +69,13 @@ form>button {
   margin-top: 1rem;
 }
 
-form>button:hover {
+form > button:hover {
   background-color: #fff;
   border-color: blue;
   color: blue;
 }
 
-form>p {
+form > p {
   text-align: center;
   color: black;
   display: flex;
@@ -83,7 +83,7 @@ form>p {
   justify-content: center;
 }
 
-form>p>a {
+form > p > a {
   text-decoration: none;
   font-size: 17px;
   color: #888;
@@ -98,7 +98,6 @@ form>p>a {
     width: 30vw;
   }
 }
-
 
 @media only screen and (max-width: 768px) {
   .wrapper {

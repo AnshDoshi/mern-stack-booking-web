@@ -27,16 +27,15 @@ const Header = ({ type }) => {
       key: "selection",
     },
   ]);
-  const [openOptions, setOpenOptions] = useState(false);
   const [options, setOptions] = useState({
     adult: 1,
     children: 0,
     room: 1,
   });
+  const [openOptions, setOpenOptions] = useState(false);
 
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
-
 
   const handleOption = (name, operation) => {
     setOptions((prev) => {
@@ -61,7 +60,6 @@ const Header = ({ type }) => {
           type === "list" ? "headerContainer listMode" : "headerContainer"
         }
       >
-      
         {type !== "list" && (
           <>
             <h1 className="headerTitle">
@@ -69,9 +67,13 @@ const Header = ({ type }) => {
             </h1>
             <p className="headerDesc">
               Get rewarded for your travels – unlock instant savings of 10% or
-              more with a free Rentalia account
+              more with a free Rentilia account
             </p>
-            {!user && <button className="headerBtn" onClick={(()=>navigate("/login"))}>Sign in / Register</button>}
+            {!user && (
+              <button className="headerBtn" onClick={() => navigate("/login")}>
+                Sign in / Register
+              </button>
+            )}
             <div className="headerSearch">
               <div className="headerSearchItem">
                 <FontAwesomeIcon icon={faBed} className="headerIcon" />
@@ -177,7 +179,11 @@ const Header = ({ type }) => {
                 )}
               </div>
               <div className="headerSearchItem">
-                <button className="headerBtn" onClick={handleSearch}>
+                <button
+                  className="headerBtn"
+                  onClick={handleSearch}
+                  disabled={destination?.length == 0}
+                >
                   Search
                 </button>
               </div>
